@@ -1,20 +1,16 @@
 from pydantic import BaseModel
-
-
-class ApiKeyRequest(BaseModel):
-    access_key: str
+from pydantic import conint
+from pydantic import EmailStr
+from pydantic import constr
 
 
 class User(BaseModel):
-    username: str
-    age: int
-    email: str
-    password: str
+    id: int
+    first_name: str
+    last_name: str
+    age: conint(gt=1)
+    country: str
+    password: constr(min_length=9, max_length=15)
+    email: EmailStr
 
-
-class Order(BaseModel):
-    id_tag: int
-    name_of_product: str
-    amount: str
-    total_value: float
 
