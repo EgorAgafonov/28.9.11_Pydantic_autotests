@@ -1,22 +1,29 @@
-from pydantic import BaseModel
 from api import User
 import pytest
-import requests
 
-def test_correct_all_values_in_response():
+def test_all_values_correct_in_response():
+    """Положительный тест на полное соответствие всех значений в теле ответа (response) валидным значениям шаблона
+    - модели данных BaseModel библиотеки Pydantic. Для тестов по правилам ОПП определен класс User в отдельном
+    файле api.py."""
+
     response = [
-        {"id": 123, "first_name": "Peter", "last_name": "Venkman", "age": 34,
+        {"id": 1, "first_name": "Peter", "last_name": "Venkman", "age": 34,
+         "country": "USA", "password": "ghostbusters", "email": 'ghostbusters1984@gmail.com'}
+    ]
+    users = [User(**user) for user in response]
+
+def test_incorrect_age_value_in_response():
+    """Негативный тест на несоответствие значения возраста (age) в теле ответа (response) валидному значению возраста,
+    определенному в классе User(BaseModel) библиотеки Pydantic. Для теста используется валидатор conint(gt=1)
+    библиотеки Pydantic, который вводит ограничение на значение ключа age - более 1 символа."""
+
+    response = [
+        {"id": 1, "first_name": "Peter", "last_name": "Venkman", "age": 1,
          "country": "USA", "password": "ghostbusters", "email": 'ghostbusters1984@gmail.com'}
     ]
     users = [User(**user) for user in response]
 
 
-# def test_users_get_response():
-#     response = [
-#         {"id": 123, "first_name": "John", "last_name": "Doe"},
-#         {"id": 456, "first_name": "Jane", "last_name": "Doe"}
-#     ]
-#     users = [User(**user) for user in response]
 #
 #
 #
