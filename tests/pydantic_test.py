@@ -4,11 +4,11 @@ import pytest
 import requests
 
 
-def test_access_token_required():
+def test_api_key_required():
     request = {
         "access_token": "token123"
     }
-    AccessTokenRequest(**request)
+    ApiKeyRequest(**request)
 
 
 def test_users_get_response():
@@ -23,7 +23,7 @@ def test_users_get_response():
 def test_access_token_required_empty():
     request = {}
     with pytest.raises(ValueError):
-        AccessTokenRequest(**request)
+        ApiKeyRequest(**request)
 
 
 def test_access_token_format():
@@ -31,7 +31,7 @@ def test_access_token_format():
         "access_token": "invalid_token_format"
     }
     with pytest.raises(ValueError):
-        AccessTokenRequest(**request)
+        ApiKeyRequest(**request)
 
 
 def test_users_get_success():
