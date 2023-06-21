@@ -10,7 +10,7 @@ class User(BaseModel):
     last_name: str
     age: conint(gt=12)
     country: str
-    password: constr(min_length=9, max_length=15)
+    password: str
     email: EmailStr
 
 
