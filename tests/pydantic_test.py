@@ -90,14 +90,14 @@ def test_incorrect_id_value_in_response():
 
 def test_incorrect_first_name_value_in_response():
     """Негативный тест на несоответствие значения ключа first_name в теле ответа (response) валидному типу значения
-    first_name, определенному в классе User(BaseModel). Тест c помощью оператора assert сравнивает значения ключей
-    first_name в теле ответа (response) и в классе User(BaseModel), затем выводит результат сравнения.
-    Негативный тест считается пройденным, если сравниваемые типы данных не соответствует друг другу."""
+    first_name, определенному в классе User(BaseModel). Для теста используется валидатор constr(strict=str) библиотеки
+    Pydantic, который вводит ограничение на значение ключа first_name - допустимо только строковое значение.
+    Также, тест c помощью оператора assert сравнивает значения ключей first_name в теле ответа (response) и в классе
+    User(BaseModel), затем выводит результат сравнения. Негативный тест считается пройденным, если сравниваемые типы
+    данных не соответствует друг другу (ожидается str, а приходит int)."""
 
     response = [
         {"id": 1, "first_name": 123, "last_name": "Venkman", "age": 34, "country": "USA",
-         "password": "ghostbusters", "email": "ghostbusters1984@gmail.com"},
-        {"id": 2, "first_name": "Egon", "last_name": "Spengler", "age": 40, "country": "USA",
          "password": "ghostbusters", "email": "ghostbusters1984@gmail.com"}
     ]
 
