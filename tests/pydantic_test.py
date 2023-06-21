@@ -4,7 +4,7 @@ import pytest
 
 def test_all_values_correct_in_response():
     """Положительный тест на полное соответствие всех значений в теле ответа (response) валидным значениям шаблона
-    - модели данных BaseModel библиотеки Pydantic. Для тестов по правилам ОПП определен класс User в отдельном
+    - модели данных BaseModel библиотеки Pydantic. Для тестов по правилам ООП определен класс User в отдельном
     файле api.py."""
 
     response = {"id": 1, "first_name": "Peter", "last_name": "Venkman", "age": 34,
